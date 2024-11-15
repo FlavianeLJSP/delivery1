@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Delivery</title>
+
+    <!-- Carregar o arquivo CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao nosso Delivery</h1>
+        <nav>
+            <a href="{% url 'home' %}">Início</a><br>
+            <a href="{% url 'menu' %}">Menu</a><br>
+            <a href="{% url 'ver_carrinho' %}">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Escolha seus produtos</h2>
+        <p>Confira nosso menu e adicione os itens ao seu carrinho!</p>
+
+        <!-- Botão para ir ao Menu -->
+        <a href="{% url 'menu' %}">
+            <button>Ir para o Menu</button>
+        </a>
+    </main>
+</body>
+</html>

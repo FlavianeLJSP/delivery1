@@ -1,0 +1,39 @@
+<!-- delivery/templates/delivery/confirmacao.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Pedido</title>
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Confirmação de Pedido</h1>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'menu' %}">Menu</a>
+            <a href="{% url 'ver_carrinho' %}">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>{{ mensagem }}</h2>
+
+        <!-- Se o usuário não estiver logado, redireciona para a página de login -->
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login_cliente' %}">
+                <button>Finalizar Pedido - Faça login</button>
+            </a>
+        {% endif %}
+
+        <a href="{% url 'home' %}">
+            <button>Voltar à página inicial</button>
+        </a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- delivery/templates/delivery/login.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   {% load static %}
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'menu' %}">Menu</a>
+            <a href="{% url 'ver_carrinho' %}">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+
+        <h2>Por favor, faça login para finalizar seu pedido</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p>Não tem uma conta? <a href="{% url 'registro_cliente' %}">Cadastre-se</a></p>
+
+        <hr>
+
+        <h2>Criar uma nova conta</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ register_form.as_p }}
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <p>Já tem uma conta? <a href="{% url 'login_cliente' %}">Faça login</a></p>
+    </main>
+</body>
+</html>

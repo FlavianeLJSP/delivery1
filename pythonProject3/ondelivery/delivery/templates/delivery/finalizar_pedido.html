@@ -1,0 +1,40 @@
+<!-- delivery/templates/delivery/finalizar_pedido.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido</title>
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Finalizar Pedido</h1>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'menu' %}">Menu</a>
+            <a href="{% url 'ver_carrinho' %}">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Confirmar pedido</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <p>Você tem certeza que deseja finalizar o pedido?</p>
+            <button type="submit">Sim, finalizar pedido</button>
+        </form>
+
+        <!-- Se o usuário não estiver logado, o botão redireciona para o login -->
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login_cliente' %}">
+                <button>Fazer login para confirmar pedido</button>
+            </a>
+        {% endif %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+      <!-- Carregar o arquivo CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Delivery</title>
+</head>
+<body>
+    <header>
+        <h1>Menu de Produtos</h1>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'ver_carrinho' %}">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Produtos</h2>
+        <ul>
+            {% for produto in produtos %}
+                <li>
+                    <h3>{{ produto.nome }}</h3>
+                    <p>{{ produto.descricao }}</p>
+                    <p>R$ {{ produto.preco }}</p>
+                    <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
